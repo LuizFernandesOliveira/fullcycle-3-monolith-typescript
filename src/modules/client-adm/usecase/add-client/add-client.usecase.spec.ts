@@ -10,7 +10,7 @@ const MockRepository = () => {
 describe("Add Client Usecase unit test", () => {
   it("should add a client", async () => {
     const repository = MockRepository();
-    const usecase = new AddClientUseCase(repository);
+    const useCase = new AddClientUseCase(repository);
 
     const input = {
       name: "Client 1",
@@ -18,7 +18,7 @@ describe("Add Client Usecase unit test", () => {
       address: "Address 1",
     };
 
-    const result = await usecase.execute(input);
+    const result = await useCase.execute(input);
 
     expect(repository.add).toHaveBeenCalled();
     expect(result.id).toBeDefined();
