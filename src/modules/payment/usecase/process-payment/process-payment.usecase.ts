@@ -5,9 +5,13 @@ import {
   ProcessPaymentInputDto,
   ProcessPaymentOutputDto,
 } from "./process-payment.dto";
+import ProcessPaymentMapper from "./process-payment.mapper";
 
 export default class ProcessPaymentUseCase implements UseCaseInterface {
-  constructor(private transactionRepository: PaymentGateway) {}
+  private repository: PaymentGateway;
+  constructor(repository: PaymentGateway) {
+    this.repository = repository;
+  }
 
   async execute(
     input: ProcessPaymentInputDto
@@ -17,17 +21,7 @@ export default class ProcessPaymentUseCase implements UseCaseInterface {
       orderId: input.orderId,
     });
     transaction.process();
-    const persistTransaction = await this.transactionRepository.save(
-      transaction
-    );
-
-    return {
-      transactionId: persistTransaction.id.id,
-      orderId: persistTransaction.orderId,
-      amount: persistTransaction.amount,
-      status: persistTransaction.status,
-      createdAt: persistTransaction.createdAt,
-      updatedAt: persistTransaction.updatedAt,
-    };
+    const persistTransaction = await this.repository.save(transaction);
+    return ProcessPaymentMapper.toOutputDto(persistTransaction);
   }
 }

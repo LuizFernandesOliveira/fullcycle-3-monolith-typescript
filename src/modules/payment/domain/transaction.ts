@@ -12,8 +12,8 @@ type TransactionProps = {
 };
 
 export default class Transaction extends BaseEntity implements AggregateRoot {
-  private _amount: number;
-  private _orderId: string;
+  private readonly _amount: number;
+  private readonly _orderId: string;
   private _status: string;
 
   constructor(props: TransactionProps) {

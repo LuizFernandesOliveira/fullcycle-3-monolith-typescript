@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize-typescript";
+import {Sequelize} from "sequelize-typescript";
 import PaymentFacadeFactory from "../factory/payment.facade.factory";
 import TransactionModel from "../repository/transaction.model";
 
@@ -10,7 +10,7 @@ describe("PaymentFacade test", () => {
       dialect: "sqlite",
       storage: ":memory:",
       logging: false,
-      sync: { force: true },
+      sync: {force: true},
     });
 
     await sequelize.addModels([TransactionModel]);
@@ -22,10 +22,6 @@ describe("PaymentFacade test", () => {
   });
 
   it("should create a transaction", async () => {
-    // const repository = new TransactionRepostiory();
-    // const usecase = new ProcessPaymentUseCase(repository);
-    // const facade = new PaymentFacade(usecase);
-
     const facade = PaymentFacadeFactory.create();
 
     const input = {
