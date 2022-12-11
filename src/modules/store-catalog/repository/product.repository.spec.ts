@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize-typescript";
+import {Sequelize} from "sequelize-typescript";
 import ProductModel from "./product.model";
 import ProductRepository from "./product.repository";
 
@@ -10,7 +10,7 @@ describe("ProductRepository test", () => {
       dialect: "sqlite",
       storage: ":memory:",
       logging: false,
-      sync: { force: true },
+      sync: {force: true},
     });
 
     await sequelize.addModels([ProductModel]);
@@ -36,8 +36,8 @@ describe("ProductRepository test", () => {
       salesPrice: 200,
     });
 
-    const productRepository = new ProductRepository();
-    const products = await productRepository.findAll();
+    const repository = new ProductRepository();
+    const products = await repository.findAll();
 
     expect(products.length).toBe(2);
     expect(products[0].id.id).toBe("1");
@@ -58,8 +58,8 @@ describe("ProductRepository test", () => {
       salesPrice: 100,
     });
 
-    const productRepository = new ProductRepository();
-    const product = await productRepository.find("1");
+    const repository = new ProductRepository();
+    const product = await repository.find("1");
 
     expect(product.id.id).toBe("1");
     expect(product.name).toBe("Product 1");
