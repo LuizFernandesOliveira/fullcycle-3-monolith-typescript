@@ -24,6 +24,8 @@ export default class GenerateInvoiceMapper {
           price: item.price
         });
       }),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
   }
 
