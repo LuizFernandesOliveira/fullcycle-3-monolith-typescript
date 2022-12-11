@@ -98,6 +98,17 @@ describe("InvoiceRepository test", () => {
 
     expect(invoice.id.id).toEqual("1");
     expect(invoice.name).toEqual("Invoice 1");
+    expect(invoice.document).toEqual("Test");
+    expect(invoice.address.street).toEqual("Street 1");
+    expect(invoice.address.number).toEqual("12");
+    expect(invoice.address.complement).toEqual("Complement 1");
+    expect(invoice.address.city).toEqual("City 1");
+    expect(invoice.address.state).toEqual("State 1");
+    expect(invoice.address.zipCode).toEqual("Zip Code 1");
+    expect(invoice.items[0].id.id).toEqual("1");
+    expect(invoice.items[0].name).toEqual("Product 1");
+    expect(invoice.items[0].price).toEqual(10);
+    expect(invoice.total).toEqual(10);
   });
 
   it("should find not found a invoice", async () => {

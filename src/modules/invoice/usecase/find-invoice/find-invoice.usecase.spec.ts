@@ -36,7 +36,7 @@ describe("Find Invoice UseCase unit test", () => {
     const repository = MockRepository();
     const useCase = new FindInvoiceUseCase(repository);
 
-    const input = "1";
+    const input = {id: "1"};
 
     const result = await useCase.execute(input);
 
