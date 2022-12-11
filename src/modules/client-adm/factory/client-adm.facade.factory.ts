@@ -6,13 +6,12 @@ import FindClientUseCase from "../usecase/find-client/find-client.usecase";
 export default class ClientAdmFacadeFactory {
   static create() {
     const repository = new ClientRepository();
-    const findUsecase = new FindClientUseCase(repository);
-    const addUsecase = new AddClientUseCase(repository);
-    const facade = new ClientAdmFacade({
-      addUsecase: addUsecase,
-      findUsecase: findUsecase,
-    });
+    const findUseCase = new FindClientUseCase(repository);
+    const addUseCase = new AddClientUseCase(repository);
 
-    return facade;
+    return new ClientAdmFacade({
+      addUseCase: addUseCase,
+      findUseCase: findUseCase,
+    });
   }
 }
