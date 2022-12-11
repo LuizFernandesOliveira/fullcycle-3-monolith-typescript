@@ -19,15 +19,15 @@ const MockRepository = () => {
 
 describe("CheckStock usecase unit test", () => {
   it("should get stock of a product", async () => {
-    const ProductRepository = MockRepository();
-    const checkStockUseCase = new CheckStockUseCase(ProductRepository);
+    const repository = MockRepository();
+    const useCase = new CheckStockUseCase(repository);
     const input = {
       productId: "1",
     };
 
-    const result = await checkStockUseCase.execute(input);
+    const result = await useCase.execute(input);
 
-    expect(ProductRepository.find).toHaveBeenCalled();
+    expect(repository.find).toHaveBeenCalled();
     expect(result.productId).toBe("1");
     expect(result.stock).toBe(10);
   });

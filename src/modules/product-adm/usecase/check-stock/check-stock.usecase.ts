@@ -1,18 +1,16 @@
 import ProductGateway from "../../gateway/product.gateway";
 import { CheckStockInputDto, CheckStockOutputDto } from "./check-stock.dto";
+import CheckStockMapper from "./check-stock.mapper";
 
 export default class CheckStockUseCase {
-  private _productRepository: ProductGateway;
+  private repository: ProductGateway;
 
-  constructor(productRepository: ProductGateway) {
-    this._productRepository = productRepository;
+  constructor(repository: ProductGateway) {
+    this.repository = repository;
   }
 
   async execute(input: CheckStockInputDto): Promise<CheckStockOutputDto> {
-    const product = await this._productRepository.find(input.productId);
-    return {
-      productId: product.id.id,
-      stock: product.stock,
-    };
+    const product = await this.repository.find(input.productId);
+    return CheckStockMapper.toOutput(product);
   }
 }
