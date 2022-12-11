@@ -1,7 +1,7 @@
-import { Sequelize } from "sequelize-typescript";
+import {Sequelize} from "sequelize-typescript";
 import Id from "../../@shared/domain/value-object/id.value-object";
 import Client from "../domain/client.entity";
-import { ClientModel } from "./client.model";
+import {ClientModel} from "./client.model";
 import ClientRepository from "./client.repository";
 
 describe("ClientRepository test", () => {
@@ -12,7 +12,7 @@ describe("ClientRepository test", () => {
       dialect: "sqlite",
       storage: ":memory:",
       logging: false,
-      sync: { force: true },
+      sync: {force: true},
     });
 
     await sequelize.addModels([ClientModel]);
@@ -34,7 +34,7 @@ describe("ClientRepository test", () => {
     const repository = new ClientRepository();
     await repository.add(client);
 
-    const clientDb = await ClientModel.findOne({ where: { id: "1" } });
+    const clientDb = await ClientModel.findOne({where: {id: "1"}});
 
     expect(clientDb).toBeDefined();
     expect(clientDb.id).toBe(client.id.id);
@@ -64,5 +64,11 @@ describe("ClientRepository test", () => {
     expect(result.address).toEqual(client.address);
     expect(result.createdAt).toStrictEqual(client.createdAt);
     expect(result.updatedAt).toStrictEqual(client.updatedAt);
+  });
+
+  it("should not find a client", async () => {
+    const repository = new ClientRepository();
+
+    await expect(() => repository.find("2")).rejects.toThrowError("Client not found");
   });
 });
