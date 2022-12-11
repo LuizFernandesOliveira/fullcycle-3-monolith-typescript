@@ -18,16 +18,12 @@ const MockRepository = () => {
 
 describe("find a product usecase unit test", () => {
   it("should find a product", async () => {
-    const productRepository = MockRepository();
-    const usecase = new FindProductUseCase(productRepository);
+    const repository = MockRepository();
+    const useCase = new FindProductUseCase(repository);
+    const input = {id: "1"};
+    const result = await useCase.execute(input);
 
-    const input = {
-      id: "1",
-    };
-
-    const result = await usecase.execute(input);
-
-    expect(productRepository.find).toHaveBeenCalled();
+    expect(repository.find).toHaveBeenCalled();
     expect(result.id).toBe("1");
     expect(result.name).toBe("Product 1");
     expect(result.description).toBe("Description 1");
