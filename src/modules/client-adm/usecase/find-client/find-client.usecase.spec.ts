@@ -19,13 +19,11 @@ const MockRepository = () => {
 describe("Find Client Usecase unit test", () => {
   it("should find a client", async () => {
     const repository = MockRepository();
-    const usecase = new FindClientUseCase(repository);
+    const useCase = new FindClientUseCase(repository);
 
-    const input = {
-      id: "1",
-    };
+    const input = {id: "1"};
 
-    const result = await usecase.execute(input);
+    const result = await useCase.execute(input);
 
     expect(repository.find).toHaveBeenCalled();
     expect(result.id).toEqual(input.id);
