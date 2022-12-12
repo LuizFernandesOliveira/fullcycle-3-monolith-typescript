@@ -5,8 +5,9 @@ import {
   AddClientOutputDto,
 } from "./add-client.usecase.dto";
 import AddClientUseCaseMapper from "./add-client-usecase.mapper";
+import UseCaseInterface from "../../../@shared/usecase/use-case.interface";
 
-export default class AddClientUseCase {
+export default class AddClientUseCase implements UseCaseInterface {
   private repository: ClientGateway;
 
   constructor(repository: ClientGateway) {

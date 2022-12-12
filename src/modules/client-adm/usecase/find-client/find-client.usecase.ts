@@ -4,8 +4,9 @@ import {
   FindClientOutputDto,
 } from "./find-client.usecase.dto";
 import FindClientUseCaseMapper from "./find-client.usecase.mapper";
+import UseCaseInterface from "../../../@shared/usecase/use-case.interface";
 
-export default class FindClientUseCase {
+export default class FindClientUseCase implements UseCaseInterface {
   private repository: ClientGateway;
 
   constructor(repository: ClientGateway) {
