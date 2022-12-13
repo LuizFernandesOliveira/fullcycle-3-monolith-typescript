@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import { Sequelize } from "sequelize-typescript";
-import {ProductModel} from "../modules/product-adm/repository/product.model";
+import {ProductModel as ProductAdmProductModel} from "../modules/product-adm/repository/product.model";
+import {ProductModel as StoreCatalogProductModel} from "../modules/store-catalog/repository/product.model";
 import {productRoute} from "./routes/product.route";
 
 export const app: Express = express();
@@ -15,7 +16,10 @@ async function setupDb() {
     storage: "./db.sqlite",
     logging: false,
   });
-  await sequelize.addModels([ProductModel]);
+  await sequelize.addModels([
+    StoreCatalogProductModel,
+    ProductAdmProductModel,
+  ]);
   await sequelize.sync();
 }
 

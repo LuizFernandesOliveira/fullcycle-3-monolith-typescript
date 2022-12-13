@@ -41,7 +41,7 @@ describe("E2E test for product", () => {
     expect(response.status).toBe(500);
   });
 
-  it("should check stock", async () => {
+  it("should find a product", async () => {
     const input: AddProductInputDto = {
       name: "Notebook test",
       description: "Macbook Pro",
@@ -55,8 +55,10 @@ describe("E2E test for product", () => {
     const responseCheckStock = await request(app).get(`/products/${response.body.id}`);
     expect(responseCheckStock.status).toBe(200);
     expect(responseCheckStock.body).toEqual({
-      productId: expect.any(String),
-      stock: input.stock,
+      id: response.body.id,
+      name: input.name,
+      description: input.description,
+      salesPrice: input.purchasePrice,
     });
   });
 });

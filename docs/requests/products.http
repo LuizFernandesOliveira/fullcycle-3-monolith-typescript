@@ -10,5 +10,5 @@ Content-Type: application/json
 }
 
 ### Send GET request with id
-GET http://localhost:3000/products/f6eca67f-72d8-4835-ba32-c5a9410cd291
+GET http://localhost:3000/products/e03eb72e-9a03-43ac-9668-25c3f0e3fe92
 Content-Type: application/json
