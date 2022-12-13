@@ -1,0 +1,14 @@
+### Send POST request with json body
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "Notebook 2",
+  "description": "Macbook Pro",
+  "purchasePrice": 4000,
+  "stock": 10
+}
+
+### Send GET request with id
+GET http://localhost:3000/products/f6eca67f-72d8-4835-ba32-c5a9410cd291
+Content-Type: application/json

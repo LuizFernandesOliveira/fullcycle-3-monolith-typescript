@@ -22,8 +22,8 @@ export class ProductModel extends Model {
   stock: number;
 
   @Column({allowNull: false})
-  createdAt: Date;
+  createdAt?: Date;
 
   @Column({allowNull: false})
-  updatedAt: Date;
+  updatedAt?: Date;
 }
