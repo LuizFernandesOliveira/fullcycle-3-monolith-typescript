@@ -11,7 +11,7 @@ describe("E2E test for product", () => {
     await sequelize.close();
   });
 
-  it("should create a product", async () => {
+  it("should find a product", async () => {
     const input: AddProductInputDto = {
       name: "Notebook test",
       description: "Macbook Pro",
@@ -21,23 +21,14 @@ describe("E2E test for product", () => {
     const response = await request(app)
       .post("/products")
       .send(input);
-    expect(response.status).toBe(201);
-    expect(response.body).toEqual({
-      id: expect.any(String),
+
+    const responseCheckStock = await request(app).get(`/store-catalogs/${response.body.id}`);
+    expect(responseCheckStock.status).toBe(200);
+    expect(responseCheckStock.body).toEqual({
+      id: response.body.id,
       name: input.name,
       description: input.description,
-      purchasePrice: input.purchasePrice,
-      stock: input.stock,
-      createdAt: expect.any(String),
-      updatedAt: expect.any(String),
+      salesPrice: input.purchasePrice,
     });
-  });
-
-  it("should not create a product", async () => {
-    const response = await request(app).post("/products").send({
-      name: "Note",
-    });
-
-    expect(response.status).toBe(500);
   });
 });

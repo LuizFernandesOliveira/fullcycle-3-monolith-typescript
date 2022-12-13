@@ -1,0 +1,3 @@
+### Send GET request with id
+GET http://localhost:3000/store-catalogs/e03eb72e-9a03-43ac-9668-25c3f0e3fe92
+Content-Type: application/json

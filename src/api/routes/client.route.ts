@@ -1,13 +1,12 @@
 import express, {Request, Response} from "express";
-import AddProductUseCase from "../../modules/product-adm/usecase/add-product/add-product.usecase";
-import ProductAdmProductRepository from "../../modules/product-adm/repository/product.repository";
-
+import AddClientUseCase from "../../modules/client-adm/usecase/add-client/add-client.usecase";
+import ClientRepository from "../../modules/client-adm/repository/client.repository";
 
 export const productRoute = express.Router();
 
 productRoute.post("/", async (req: Request, res: Response) => {
   const input = req.body;
-  const useCase = new AddProductUseCase(new ProductAdmProductRepository());
+  const useCase = new AddClientUseCase(new ClientRepository());
   try {
     const product = await useCase.execute(input);
     res.status(201).send(product);
