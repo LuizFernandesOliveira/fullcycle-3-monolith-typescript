@@ -1,0 +1,15 @@
+### Send POST request with json body
+POST http://localhost:3000/clients
+Content-Type: application/json
+
+{
+  "name": "Joao da Silva",
+  "email": "joao@joao.com",
+  "document": "12345678910",
+  "street": "Rua das Flores",
+  "number": "123",
+  "complement": "Casa 1",
+  "city": "São Paulo",
+  "state": "SP",
+  "zipCode": "12345678"
+}
