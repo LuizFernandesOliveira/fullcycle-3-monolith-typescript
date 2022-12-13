@@ -1,4 +1,5 @@
-import {Column, Model, PrimaryKey, Table} from "sequelize-typescript";
+import {BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table} from "sequelize-typescript";
+import OrderModel from "./order.model";
 
 @Table({
   tableName: "clients",
@@ -36,9 +37,10 @@ export default class ClientModel extends Model {
   @Column({allowNull: false})
   zipCode: string;
 
-  @Column({allowNull: false})
-  createdAt: Date;
+  @ForeignKey(() => OrderModel)
+  @Column({ allowNull: false })
+  declare order_id: string;
 
-  @Column({allowNull: false})
-  updatedAt: Date;
+  @BelongsTo(() => OrderModel)
+  declare order: OrderModel;
 }

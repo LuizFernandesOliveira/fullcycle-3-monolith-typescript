@@ -1,4 +1,5 @@
-import {Column, Model, PrimaryKey, Table} from "sequelize-typescript";
+import {BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table} from "sequelize-typescript";
+import OrderModel from "./order.model";
 
 @Table({
   tableName: "products",
@@ -16,17 +17,12 @@ export default class ProductModel extends Model {
   description: string;
 
   @Column({allowNull: false})
-  purchasePrice: number;
-
-  @Column({allowNull: true})
   salesPrice: number;
 
-  @Column({allowNull: false})
-  stock: number;
+  @ForeignKey(() => OrderModel)
+  @Column({ allowNull: false })
+  declare order_id: string;
 
-  @Column({allowNull: false})
-  createdAt?: Date;
-
-  @Column({allowNull: false})
-  updatedAt?: Date;
+  @BelongsTo(() => OrderModel)
+  declare order: OrderModel;
 }

@@ -5,7 +5,7 @@ import {ProductModel} from "./product.model";
   tableName: "invoices",
   timestamps: false,
 })
-export class InvoiceModel extends Model {
+export default class InvoiceModel extends Model {
   @PrimaryKey
   @Column({allowNull: false})
   id: string;

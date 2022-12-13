@@ -1,5 +1,5 @@
 import Invoice from "../domain/invoice.entity";
-import {InvoiceModel} from "./invoice.model";
+import InvoiceModel from "./invoice.model";
 import InvoiceGateway from "../gateway/invoice.gateway";
 import {ProductModel} from "./product.model";
 import Id from "../../@shared/domain/value-object/id.value-object";
