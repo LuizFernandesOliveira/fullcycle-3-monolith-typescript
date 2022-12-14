@@ -38,7 +38,7 @@ describe("OrderRepository test", () => {
   it("should add an order", async () => {
     const product = new Product({
       name: "Product 1",
-      salesPrice: 100,
+      price: 100,
       description: "Description 1",
     });
 
@@ -85,7 +85,7 @@ describe("OrderRepository test", () => {
     expect(result.client.zipCode).toEqual(client.zipCode);
     expect(result.products[0].id).toBeDefined();
     expect(result.products[0].name).toEqual(product.name);
-    expect(result.products[0].salesPrice).toEqual(product.salesPrice);
+    expect(result.products[0].price).toEqual(product.price);
     expect(result.products[0].description).toEqual(product.description);
     expect(result.invoiceId).toEqual(order.invoiceId);
   });
@@ -93,7 +93,7 @@ describe("OrderRepository test", () => {
   it("should find an order", async () => {
     const product = new Product({
       name: "Product 1",
-      salesPrice: 100,
+      price: 100,
       description: "Description 1",
     });
 
@@ -138,7 +138,7 @@ describe("OrderRepository test", () => {
     expect(result.client.zipCode).toEqual(client.zipCode);
     expect(result.products[0].id).toBeDefined();
     expect(result.products[0].name).toEqual(product.name);
-    expect(result.products[0].salesPrice).toEqual(product.salesPrice);
+    expect(result.products[0].price).toEqual(product.price);
     expect(result.products[0].description).toEqual(product.description);
     expect(result.invoiceId).toEqual(order.invoiceId);
   });

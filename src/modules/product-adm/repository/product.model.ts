@@ -12,21 +12,18 @@ export default class ProductModel extends Model {
   @Column({allowNull: false})
   name: string;
 
-  @Column({allowNull: false})
+  @Column({allowNull: true})
   description: string;
 
   @Column({allowNull: false})
-  purchasePrice: number;
+  price: number;
 
   @Column({allowNull: true})
-  salesPrice: number;
-
-  @Column({allowNull: false})
   stock: number;
 
-  @Column({allowNull: false})
+  @Column({allowNull: true})
   createdAt?: Date;
 
-  @Column({allowNull: false})
+  @Column({allowNull: true})
   updatedAt?: Date;
 }

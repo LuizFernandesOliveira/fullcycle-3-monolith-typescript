@@ -15,7 +15,7 @@ describe("E2E test for product", () => {
     const input: AddProductInputDto = {
       name: "Notebook test",
       description: "Macbook Pro",
-      purchasePrice: 4000,
+      price: 4000,
       stock: 10
     }
     const response = await request(app)
@@ -28,7 +28,7 @@ describe("E2E test for product", () => {
       id: response.body.id,
       name: input.name,
       description: input.description,
-      salesPrice: input.purchasePrice,
+      price: input.price,
     });
   });
 });

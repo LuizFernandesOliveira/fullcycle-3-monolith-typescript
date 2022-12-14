@@ -9,6 +9,12 @@ import Product from "../domain/product.entity";
 
 export default class OrderRepository implements CheckoutGateway {
   async addOrder(order: Order): Promise<void> {
+    await ClientModel.destroy({
+      where: {id: order.client.id.id},
+    });
+    await ProductModel.destroy({
+      where: {id: order.products.map(product => product.id.id)},
+    });
     await OrderModel.create({
       id: order.id.id,
       status: order.status,
@@ -27,7 +33,7 @@ export default class OrderRepository implements CheckoutGateway {
       products: order.products.map(product => ({
         id: product.id.id,
         name: product.name,
-        salesPrice: product.salesPrice,
+        price: product.price,
         description: product.description,
       })),
       invoiceId: order.invoiceId,
@@ -59,7 +65,7 @@ export default class OrderRepository implements CheckoutGateway {
       products: order.products.map(product => new Product({
         id: new Id(product.id),
         name: product.name,
-        salesPrice: product.salesPrice,
+        price: product.price,
         description: product.description,
       })),
       invoiceId: order.invoiceId,

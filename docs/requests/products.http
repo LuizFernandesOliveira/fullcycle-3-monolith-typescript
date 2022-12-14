@@ -5,6 +5,6 @@ Content-Type: application/json
 {
   "name": "Notebook 2",
   "description": "Macbook Pro",
-  "purchasePrice": 4000,
+  "price": 4000,
   "stock": 10
 }

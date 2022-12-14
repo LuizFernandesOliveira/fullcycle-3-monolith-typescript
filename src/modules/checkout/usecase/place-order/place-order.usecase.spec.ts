@@ -134,7 +134,7 @@ describe("PlaceOrderUseCase unit test", () => {
           id: "0",
           name: "Product 0",
           description: "Product 0 description",
-          salesPrice: 0,
+          price: 0,
         }),
       }
 
@@ -145,7 +145,7 @@ describe("PlaceOrderUseCase unit test", () => {
         id: new Id("0"),
         name: "Product 0",
         description: "Product 0 description",
-        salesPrice: 0,
+        price: 0,
       }));
       expect(mockCatalogFacade.find).toHaveBeenCalledTimes(1);
     });
@@ -200,13 +200,13 @@ describe("PlaceOrderUseCase unit test", () => {
         id: new Id("1"),
         name: "Product 1",
         description: "Product 1 description",
-        salesPrice: 40,
+        price: 40,
       }),
       "2": new Product({
         id: new Id("2"),
         name: "Product 2",
         description: "Product 2 description",
-        salesPrice: 30,
+        price: 30,
       }),
     };
 
@@ -301,12 +301,12 @@ describe("PlaceOrderUseCase unit test", () => {
           {
             id: products["1"].id.id,
             name: products["1"].name,
-            price: products["1"].salesPrice,
+            price: products["1"].price,
           },
           {
             id: products["2"].id.id,
             name: products["2"].name,
-            price: products["2"].salesPrice,
+            price: products["2"].price,
           },
         ],
       });

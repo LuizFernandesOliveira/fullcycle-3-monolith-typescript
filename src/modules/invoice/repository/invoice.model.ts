@@ -1,5 +1,5 @@
 import {Column, HasMany, Model, PrimaryKey, Table} from "sequelize-typescript";
-import {ProductModel} from "./product.model";
+import ProductModel from "./product.model";
 
 @Table({
   tableName: "invoices",
@@ -17,22 +17,22 @@ export default class InvoiceModel extends Model {
   document: string;
 
   @Column({allowNull: false})
-  declare street: string;
+  street: string;
 
   @Column({allowNull: false})
-  declare number: string;
+  number: string;
 
   @Column({allowNull: false})
-  declare complement: string;
+  complement: string;
 
   @Column({allowNull: false})
-  declare city: string;
+  city: string;
 
   @Column({allowNull: false})
-  declare state: string;
+  state: string;
 
   @Column({allowNull: false})
-  declare zipCode: string;
+  zipCode: string;
 
   @Column({allowNull: false})
   createdAt: Date;
@@ -40,6 +40,6 @@ export default class InvoiceModel extends Model {
   @Column({allowNull: false})
   updatedAt: Date;
 
-  @HasMany(() => ProductModel)
+  @HasMany(() => ProductModel, 'invoice_id')
   declare items: ProductModel[];
 }

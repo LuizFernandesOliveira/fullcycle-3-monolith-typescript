@@ -1,13 +1,17 @@
 import Invoice from "../domain/invoice.entity";
 import InvoiceModel from "./invoice.model";
 import InvoiceGateway from "../gateway/invoice.gateway";
-import {ProductModel} from "./product.model";
+import ProductModel from "./product.model";
 import Id from "../../@shared/domain/value-object/id.value-object";
 import Address from "../valueobject/address.valueobject";
 import Product from "../domain/product.entity";
 
 export default class InvoiceRepository implements InvoiceGateway {
   async generate(invoice: Invoice): Promise<any> {
+    await ProductModel.destroy({
+      where: {id: invoice.items.map(item => item.id.id)},
+    });
+
     await InvoiceModel.create({
       id: invoice.id.id,
       name: invoice.name,
@@ -23,17 +27,17 @@ export default class InvoiceRepository implements InvoiceGateway {
         name: item.name,
         price: item.price,
       })),
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      createdAt: invoice.createdAt,
+      updatedAt: invoice.updatedAt,
     }, {
-      include: [{ model: ProductModel }],
+      include: [{model: ProductModel}],
     });
   }
 
   async find(id: string): Promise<Invoice> {
     const invoice = await InvoiceModel.findOne({
-      where: { id },
-      include: [{ model: ProductModel }],
+      where: {id},
+      include: [{model: ProductModel}],
     });
 
     if (!invoice) {

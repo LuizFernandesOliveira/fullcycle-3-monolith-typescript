@@ -15,7 +15,7 @@ describe("E2E test for product", () => {
     const input: AddProductInputDto = {
       name: "Notebook test",
       description: "Macbook Pro",
-      purchasePrice: 4000,
+      price: 4000,
       stock: 10
     }
     const response = await request(app)
@@ -26,7 +26,7 @@ describe("E2E test for product", () => {
       id: expect.any(String),
       name: input.name,
       description: input.description,
-      purchasePrice: input.purchasePrice,
+      price: input.price,
       stock: input.stock,
       createdAt: expect.any(String),
       updatedAt: expect.any(String),

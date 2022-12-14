@@ -79,7 +79,7 @@ export default class PlaceOrderUseCase implements UseCaseInterface {
             return {
               id: p.id.id,
               name: p.name,
-              price: p.salesPrice,
+              price: p.price,
             };
           }),
         })
@@ -122,7 +122,7 @@ export default class PlaceOrderUseCase implements UseCaseInterface {
       id: new Id(product.id),
       name: product.name,
       description: product.description,
-      salesPrice: product.salesPrice,
+      price: product.price,
     }
     return new Product(productProps);
   }
