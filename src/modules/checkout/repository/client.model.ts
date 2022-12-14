@@ -39,7 +39,7 @@ export default class ClientModel extends Model {
 
   @ForeignKey(() => OrderModel)
   @Column({ allowNull: false })
-  declare order_id: string;
+  declare orderId: string;
 
   @BelongsTo(() => OrderModel)
   declare order: OrderModel;
