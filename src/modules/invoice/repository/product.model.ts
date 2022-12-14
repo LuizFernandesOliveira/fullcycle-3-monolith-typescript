@@ -17,7 +17,7 @@ export default class ProductModel extends Model {
   price: number;
 
   @ForeignKey(() => InvoiceModel)
-  @Column({allowNull: true})
+  @Column({allowNull: false})
   declare invoice_id: string;
 
   @BelongsTo(() => InvoiceModel)

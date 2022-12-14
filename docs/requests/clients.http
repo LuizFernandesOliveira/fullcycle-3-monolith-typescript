@@ -3,6 +3,7 @@ POST http://localhost:3000/clients
 Content-Type: application/json
 
 {
+  "id": "1",
   "name": "Joao da Silva",
   "email": "joao@joao.com",
   "document": "12345678910",

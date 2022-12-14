@@ -1,0 +1,3 @@
+### Send GET request with id
+GET http://localhost:3000/invoice/114fbc97-7488-4144-b5f6-325834ded342
+Content-Type: application/json

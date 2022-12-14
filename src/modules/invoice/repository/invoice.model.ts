@@ -40,6 +40,6 @@ export default class InvoiceModel extends Model {
   @Column({allowNull: false})
   updatedAt: Date;
 
-  @HasMany(() => ProductModel, 'invoice_id')
+  @HasMany(() => ProductModel)
   declare items: ProductModel[];
 }

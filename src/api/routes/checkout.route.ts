@@ -38,6 +38,6 @@ checkoutRoute.post("/", async (request: Request, response: Response) => {
     response.status(200).send(output);
   } catch (error) {
     console.error(error);
-    response.status(400).send(error);
+    response.status(500).send(error);
   }
 });

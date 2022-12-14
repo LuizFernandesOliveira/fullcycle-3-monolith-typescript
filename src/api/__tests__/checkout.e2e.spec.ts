@@ -14,7 +14,7 @@ describe("E2E test for checkout", () => {
 
   it("should on checkout", async () => {
     await ClientModel.create({
-      id: "1",
+      id: "10",
       name: "Client 1",
       email: "client@example.com",
       document: "0000",
@@ -29,7 +29,7 @@ describe("E2E test for checkout", () => {
     });
 
     await ProductModel.create({
-      id: "1",
+      id: "10",
       name: "My Product",
       description: "Product description",
       price: 100,
@@ -41,8 +41,8 @@ describe("E2E test for checkout", () => {
     const response = await request(app)
       .post("/checkout")
       .send({
-        clientId: "1",
-        products: [{ productId: "1" }],
+        clientId: "10",
+        products: [{ productId: "10" }],
       });
 
     expect(response.status).toEqual(200);

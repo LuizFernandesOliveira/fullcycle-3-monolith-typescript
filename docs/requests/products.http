@@ -3,6 +3,7 @@ POST http://localhost:3000/products
 Content-Type: application/json
 
 {
+  "id": "1",
   "name": "Notebook 2",
   "description": "Macbook Pro",
   "price": 4000,
